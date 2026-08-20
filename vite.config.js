@@ -35,6 +35,12 @@ export default defineConfig(({ mode, command }) => {
           // target: 'https://api.wzs.pub/mock/13',
           changeOrigin: true,
           rewrite: (p) => p.replace(/^\/dev-api/, '')
+        },
+        // AI Agent 代理
+        '/ai-api': {
+          target: 'http://127.0.0.1:8081',
+          changeOrigin: true,
+          rewrite: (p) => p.replace(/^\/ai-api/, '')
         }
       }
     },

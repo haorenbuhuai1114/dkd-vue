@@ -1,5 +1,9 @@
 <template>
   <div class="app-container home">
+    <div class="ai-float-btn" @click="goAI">
+      <el-icon :size="20" color="#fff"><ChatDotRound /></el-icon>
+      <span>AI 助手</span>
+    </div>
     <el-row :gutter="20">
       <el-col :span="18">
         <el-row :gutter="20">
@@ -28,15 +32,50 @@
 </template>
 
 <script setup name="Index">
+import { useRouter } from 'vue-router'
+import { ChatDotRound } from '@element-plus/icons-vue'
 import HomeUserTaskStats from './components/home-user-task-stats.vue';
 import HomeSkuSaleStats from './components/home-sku-sale-stats.vue';
 import SkuSaleRankChart from './components/sku-sale-rank-chart.vue';
 import SkuSaleCollectChart from './components/sku-sale-collect-chart.vue';
 import PartnerNodeCollectChart from './components/partner-node-collect-chart.vue';
 import AbnormalEquipmentTable from './components/abnormal-equipment-table.vue'
+
+const router = useRouter()
+function goAI() {
+  router.push('/ai/chat')
+}
 </script>
 
 <style scoped lang="scss">
+.ai-float-btn {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
 .home {
   blockquote {
     padding: 10px 20px;

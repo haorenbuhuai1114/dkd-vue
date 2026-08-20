@@ -83,6 +83,20 @@ export const constantRoutes = [
         meta: { title: '个人中心', icon: 'user' }
       }
     ]
+  },
+  {
+    path: '/ai',
+    component: Layout,
+    redirect: '/ai/chat',
+    meta: { title: 'AI 助手', icon: 'chat-dot-round' },
+    children: [
+      {
+        path: 'chat',
+        component: () => import('@/views/ai/chat/index'),
+        name: 'AiChat',
+        meta: { title: 'AI 运维助手', icon: 'chat-dot-round' }
+      }
+    ]
   }
 ]
 
